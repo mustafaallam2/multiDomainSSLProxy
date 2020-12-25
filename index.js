@@ -10,11 +10,11 @@ const proxy = require('redbird')({
       port: 443, // SSL port used to serve registered https routes with LetsEncrypt certificate.
     },
     // disable logging  
-    bunyan: false
+    // bunyan: false
   });
 
 
-app.listen(8080,'127.0.0.1',()=>{
+app.listen(8080,()=>{
   console.log('app is serving on 127.0.0.1')
 })
 
