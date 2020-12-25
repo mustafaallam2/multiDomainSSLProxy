@@ -1,4 +1,6 @@
-var proxy = require('redbird')({
+const app = require('./app')
+
+const proxy = require('redbird')({
     port: 80, // http port is needed for LetsEncrypt challenge during request / renewal. Also enables automatic http->https redirection for registered https routes. 
     letsencrypt: {
       path: __dirname + '/certs',
@@ -6,10 +8,18 @@ var proxy = require('redbird')({
     },
     ssl: {
       port: 443, // SSL port used to serve registered https routes with LetsEncrypt certificate.
-    }
+    },
+    // disable logging  
+    bunyan: false
   });
 
-  proxy.register('test.mustafaallam.com', {'https://google.com'}, {
+
+app.listen(8080,'127.0.0.1',()=>{
+  console.log('app is serving on 127.0.0.1')
+})
+
+
+  proxy.register('test.mustafaallam.com', '127.0.0.1', {
   ssl: {
     letsencrypt: {
       email: 'me@mustafaallam.com', // Domain owner/admin email
