@@ -19,7 +19,7 @@ app.listen(8080,()=>{
 })
 
 
-  proxy.register('test.mustafaallam.com', '127.0.0.1', {
+  proxy.register('test.mustafaallam.com', 'http://127.0.0.1:8080', {
   ssl: {
     letsencrypt: {
       email: 'me@mustafaallam.com', // Domain owner/admin email
