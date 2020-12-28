@@ -20,6 +20,8 @@ app.get("/:domain", (req, res) => {
               }
           }
       });
+
+      res.send(`${req.params.domain} is now registered`)
 })
 
 module.exports = app;
